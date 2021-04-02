@@ -6,7 +6,7 @@ let money,
     period;
 
     money = 35000;
-    income = 15000;
+    income = "фриланс";
     addExpenses = "Коммуналка, Еда, Интернет";
     deposit = false;
     mission = 150000;
