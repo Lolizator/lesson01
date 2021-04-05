@@ -19,11 +19,6 @@ console.log(addExpenses.length);
 console.log(`Период равен ${period} месяцев`);
 console.log(`Цель заработать ${mission} рублей`);
 
-
-addExpenses = addExpenses.toLowerCase().split(", ");
-console.log(addExpenses);
-
-
 money = prompt('Ваш месячный доход?');
 addExpenses = prompt('Перечислите возможные расходы за расчитываемый период через запятую');
 deposit = confirm('Есть ли у вас депозит в банке?');
@@ -31,6 +26,11 @@ let expenses1 = prompt('Введите обязательную статью р�
 let amount1 = prompt('Во сколько это обойдется?');
 let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount2 = prompt('Во сколько это обойдется?');
+
+
+let re = /\s*,\s*/;
+addExpenses = addExpenses.toLowerCase().split(re);
+console.log(addExpenses);
 
 let budgetMonth = money - amount1 - amount2;
 console.log('Бюджет на месяц: ', budgetMonth);
