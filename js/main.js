@@ -48,7 +48,7 @@ const getExpensesMonth = function(){
     return sum;
 };
 
-const ExpensesMonth = getExpensesMonth();
+const expensesMonth = getExpensesMonth();
 
 
 const re = /\s*,\s*/;
@@ -58,7 +58,7 @@ addExpenses = addExpenses.toLowerCase().split(re);
 function getAccumulatedMonth(a, b){
     return a - b;
 }
-const  accumulatedMonth = getAccumulatedMonth(money, ExpensesMonth);
+const  accumulatedMonth = getAccumulatedMonth(money, expensesMonth);
 
 function getTargetMonth(a, b){
     if(Math.ceil(a / b) < 0){
@@ -91,7 +91,7 @@ const statusIncome = getStatusIncome(budgetDay);
 
 
 
-console.log("Сумма всех обязательных расходов за месяц ",ExpensesMonth );
+console.log("Сумма всех обязательных расходов за месяц ",expensesMonth );
 console.log(addExpenses);
 console.log('Бюджет на день: ', budgetDay);
 console.log(statusIncome);
