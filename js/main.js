@@ -7,13 +7,13 @@ const isNumber = function(n) {
 let money = 35000,
     start = function() {
         do{
-            money = +prompt('Ваш месячный доход?');
+            money = prompt('Ваш месячный доход?');
         } while (!isNumber(money));
     };
     start();
 
-    let appData = {
-        budget: money,
+    const appData = {
+        budget: +money,
         income: {},
         addIncome: [],
         expenses: {},
@@ -33,10 +33,12 @@ let money = 35000,
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
             for(let i = 0; i < 2; i++) {
-                appData.expenses = appData.expenses[prompt('Введите обязательную статью расходов?')];
-            while (!isNumber(appData.expenses)){
-                appData.expenses = prompt('Во сколько это обойдется?');
+                let expensesKey, expensesAmount;
+                expensesKey = prompt('Введите обязательную статью расходов?');
+            while (!isNumber(expensesAmount)){
+                expensesAmount = prompt('Во сколько это обойдется?');
             }
+            appData.expenses[expensesKey] = expensesAmount;
         }
         },
 
@@ -56,11 +58,9 @@ let money = 35000,
         },
 
         getExpensesMonth: function() {
-            let sum = 0;
             for(let key in appData.expenses) {
-                sum += appData.expenses[key];
+                appData.expensesMonth += +appData.expenses[key];
             }
-            appData.expensesMonth = sum;
         },
 
         getStatusIncome: function() {
@@ -68,7 +68,7 @@ let money = 35000,
                 return('У вас высокий уровень дохода');
             } else if (appData.budgetDay >= 600) {
                 return('У вас средний уровень дохода');
-            } else if (appData.budgetDay < 600 && appData.budgetDay >= 0) {
+            } else if (appData.budgetDay > 0) {
                 return('К сожалению у вас уровень дохода ниже среднего');
             } else {
                 return('Что-то пошло не так');
