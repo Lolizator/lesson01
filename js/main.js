@@ -1,5 +1,31 @@
 'use strict';
 
+let calculateBtn = document.getElementById('#start'),
+    firstPlusBtn = document.getElementsByTagName('button')[0],
+    secondPlusBtn = document.getElementsByTagName('button')[1],
+    depositCheck = document.getElementById('#deposit-check'),
+    additionalIncome = document.querySelectorAll('.additional_income-item'),
+    budgetMonthValue = document.getElementsByClassName('result-total budget_month-value'),
+    budgetDayValue = document.getElementsByClassName('result-total budget_day-value'),
+    expensesMonthValue = document.getElementsByClassName('result-total expenses_month-value'),
+    additionalIncomeValue = document.getElementsByClassName('result-total additional_income-value'),
+    additionalExpensesValue = document.getElementsByClassName('result-total additional_expenses-value'),
+    incomePeriodValue = document.getElementsByClassName('result-total income_period-value'),
+    targetMonthValue = document.getElementsByClassName('result-total target_month-value'),
+
+    salaryAmount = document.querySelector('.salary-amount'),
+    income = document.querySelectorAll('.income-title')[1],
+    incomeAmount = document.querySelector('.income-amount'),
+    expenses = document.querySelectorAll('.expenses-title')[1],
+    expensesAmount = document.querySelector('.expenses-amount'),
+    additionalExpensesItem = document.querySelector('.additional_expenses-item'),
+    targetAmount = document.querySelector('.target-amount'),
+    range = document.querySelector('.period-select');
+
+
+
+
+
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -127,13 +153,13 @@ let money = 35000,
     console.log(appData.getStatusIncome());
 
     for (const key in appData.addExpenses) {
-                appData.addExpenses[key] = appData.addExpenses[key].charAt(0).toUpperCase() + appData.addExpenses[key].slice(1);
-                }
-            console.log(appData.addExpenses.join(', '));
+        appData.addExpenses[key] = appData.addExpenses[key].charAt(0).toUpperCase() + appData.addExpenses[key].slice(1);
+}
+    console.log(appData.addExpenses.join(', '));
 
-    //for(let key in appData) {
-   //     console.log(`Наша программа включает в себя данные: ${key} : ${appData[key]}`);
-   // }
+    for(let key in appData) {
+        console.log(`Наша программа включает в себя данные: ${key} : ${appData[key]}`);
+    }
 
     
 
