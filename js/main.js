@@ -32,6 +32,7 @@ const isNumber = function(n) {
 const isString = function(str) {
     return str === '' || str.trim() === '' || str === null || isNumber(str);
 };
+start.setAttribute('disabled', true);
 
 
 
@@ -53,7 +54,7 @@ const   appData = {
         
 
         start: function() {
-        appData.buttonOff();
+        appData.buttonOn();
         appData.budget = +salaryAmount.value;
         appData.getExpenses();
         appData.getIncome();
@@ -65,10 +66,8 @@ const   appData = {
         appData.showResult();
         },
 
-        buttonOff: function(){
-            if(salaryAmount.value === ''){
-                start.setAttribute('disabled', true);
-            } else{
+        buttonOn: function(){
+            if(salaryAmount.value !== ''){
                 start.removeAttribute('disabled');
             }
         },
@@ -211,7 +210,7 @@ const   appData = {
         }
     };
 
-    salaryAmount.addEventListener('input', appData.buttonOff);
+    salaryAmount.addEventListener('input', appData.buttonOn);
 
     periodSelect.addEventListener('input', appData.changePeriod);
 
