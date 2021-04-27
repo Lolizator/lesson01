@@ -28,6 +28,9 @@ let start = document.getElementById('start'),
     allInputs = document.querySelectorAll('[type="text"]'),
     periodSelect = document.querySelector('.period-select');
 
+function returnFoo(foo) {
+        return foo.bind(appData);
+}
 
 const isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -39,29 +42,26 @@ const isString = function(str) {
 start.setAttribute('disabled', true);
 
 class AppData {
-    constructor(budget, income, incomeMonth, addIncome, expenses, addExpenses, deposit, percentDeposit, moneyDeposit, budgetDay, budgetMonth, expensesMonth, targetMonth){
-    this.budget = budget;
-    this.income = income;
-    this.incomeMonth = incomeMonth;
-    this.addIncome = addIncome;
-    this.expenses = expenses;
-    this.addExpenses = addExpenses;
-    this.deposit = deposit;
-    this.percentDeposit = percentDeposit;
-    this.moneyDeposit =moneyDeposit;
-    this.budgetDay = budgetDay;
-    this.budgetMonth = budgetMonth;
-    this.expensesMonth = expensesMonth;
-    this.targetMonth = targetMonth;
+    constructor(){
+    this.budget = 0;
+    this.income = {};
+    this.incomeMonth = 0;
+    this.addIncome = [];
+    this.expenses = {};
+    this.addExpenses = [];
+    this.deposit = false;
+    this.percentDeposit = 0;
+    this.moneyDeposit = 0;
+    this.budgetDay = 0;
+    this.budgetMonth = 0;
+    this.expensesMonth = 0;
+    this.targetMonth = 0;
     }
-    
-
-
 start() {
         this.buttonOn();
         this.budget = +salaryAmount.value;
         this.getExpenses();
-        this.getIncome;
+        this.getIncome();
         this.getExpensesMonth();
         this.getAddExpenses();
         this.getAddIncome();
@@ -240,12 +240,11 @@ eventsListeners () {
     firstPlusBtn.addEventListener('click', appData.addIncomeBlock);
 }
 }
-const appData = new AppData(0, {}, 0, [], {}, [], false, 0, 0, 0, 0, 0, 0); 
+
+const appData = new AppData();
 appData.eventsListeners();
 
-function returnFoo(foo) {
-        return foo.bind(appData);
-}
+
 
 
 
