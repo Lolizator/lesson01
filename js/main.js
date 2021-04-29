@@ -109,7 +109,7 @@ buttonOn() {
         }
 
 showResult() {
-            if (depositPercent.value < 0 || depositPercent.value > 100) {
+            if (depositPercent.value < 0 || depositPercent.value > 100 || !isNumber(depositPercent.value)) {
                 alert('Введите корректное значение в поле проценты');
                 return;
             }
@@ -269,6 +269,7 @@ depositHandler() {
         depositAmount.style.display = 'none'; 
         depositBank.value = '';
         depositAmount.value = '';
+        depositPercent.value = '';
         this.deposit = false;
         depositBank.removeEventListener('change', this.changePercent);
     }
